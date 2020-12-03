@@ -1,5 +1,3 @@
-![](https://github.com/vegasbrianc/prometheus/workflows/prometheus%20test/badge.svg)
-
 # Contents
 
 - Introduction
@@ -22,7 +20,13 @@
 
 Here's a quick start using Play-With-Docker (PWD) to start-up a [Prometheus](http://prometheus.io/) stack containing Prometheus, Grafana and Node scraper to monitor your Docker infrastructure. The Try in PWD below allows you to quickly deploy the entire Prometheus stack with a click of the button. This will allow you to quickly test the stack to see if it meets your needs.
 
-[![Try in PWD](https://github.com/play-with-docker/stacks/raw/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/vegasbrianc/prometheus/master/pwd-stack.yml)
+docker-stack.yml :
+[![Try in PWD](https://github.com/play-with-docker/stacks/raw/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://github.com/Shashankreddysunkara/prometheus/blob/master/docker-stack.yml)
+
+docker-traefik-stack.yml: [![Try in PWD](https://github.com/play-with-docker/stacks/raw/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://github.com/Shashankreddysunkara/prometheus/blob/master/docker-traefik-stack.yml)
+
+docker-compose.yml :
+[![Try in PWD](https://github.com/play-with-docker/stacks/raw/master/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://github.com/Shashankreddysunkara/prometheus/blob/master/docker-compose.yml)
 
 # Pre-requisites
 Before we get started installing the Prometheus stack. Ensure you install the latest version of docker and [docker swarm](https://docs.docker.com/engine/swarm/swarm-tutorial/) on your Docker host machine. Docker Swarm is installed automatically when using Docker for Mac or Docker for Windows.
@@ -72,13 +76,15 @@ Here's the Dashboard Template
 ![Grafana Dashboard](https://raw.githubusercontent.com/vegasbrianc/prometheus/master/images/Dashboard.png)
 
 Grafana Dashboard - `dashboards/Grana_Dashboad.json`
-Alerting Dashboard
+
+Alerting Dashboard - `System_Monitoring.JSON`
 
 
 ## Alerting
 Alerting has been added to the stack with Slack integration. 2 Alerts have been added and are managed
 
 Alerts              - `prometheus/alert.rules`
+
 Slack configuration - `alertmanager/config.yml`
 
 The Slack configuration requires to build a custom integration.
@@ -92,6 +98,7 @@ The Slack configuration requires to build a custom integration.
 * Fill in Slack username and channel
 
 View Prometheus alerts `http://<Host IP Address>:9090/alerts`
+
 View Alert Manager `http://<Host IP Address>:9093`
 
 ### Test Alerts
@@ -109,7 +116,7 @@ Now we need to create the Prometheus Datasource in order to connect Grafana to P
 
 **Ensure the Datasource name `Prometheus`is using uppercase `P`**
 
-<img src="https://raw.githubusercontent.com/vegasbrianc/prometheus/master/images/Add_Data_Source.png" width="400" heighth="400">
+<img src="https://github.com/Shashankreddysunkara/prometheus/blob/master/images/Add_Data_Source.png" width="400" heighth="400">
 
 # Security Considerations
 This project is intended to be a quick-start to get up and running with Docker and Prometheus. Security has not been implemented in this project. It is the users responsability to implement Firewall/IpTables and SSL.
@@ -163,7 +170,7 @@ Open the Traefik Dashboard and select the different backends available
 # Production Security:
 
 Here are just a couple security considerations for this stack to help you get started.
-* Remove the published ports from Prometheus and Alerting servicesi and only allow Grafana to be accessed
+* Remove the published ports from Prometheus and Alerting services and only allow Grafana to be accessed
 * Enable SSL for Grafana with a Proxy such as [jwilder/nginx-proxy](https://hub.docker.com/r/jwilder/nginx-proxy/) or [Traefik](https://traefik.io/) with Let's Encrypt
 * Add user authentication via a Reverse Proxy [jwilder/nginx-proxy](https://hub.docker.com/r/jwilder/nginx-proxy/) or [Traefik](https://traefik.io/) for services cAdvisor, Prometheus, & Alerting as they don't support user authenticaiton
 * Terminate all services/containers via HTTPS/SSL/TLS
@@ -178,7 +185,7 @@ It appears some people have reported no data appearing in Grafana. If this is ha
 
 2. If you find after you deploy your project that the prometheus and alertmanager services are in pending status due to "no suitable node" this is due to file system permissions. Be sure to Open Docker for Mac Preferences -> File Sharing Menu and add the following:
 
-![Docker for Mac File Sharing Settings](https://github.com/vegasbrianc/prometheus/raw/master/images/mac-filesystem.png)
+![Docker for Mac File Sharing Settings](https://github.com/Shashankreddysunkara/prometheus/blob/master/images/mac-filesystem.png)
 
 # Interesting Projects that use this Repo
 Several projects utilize this Prometheus stack. Here's the list of projects:

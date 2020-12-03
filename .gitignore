@@ -1,1 +1,7 @@
 .vscode/launch.json
+*.git*
+*.idea
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+ISSUE_TEMPLATE.md
+LICENSE
