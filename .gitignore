@@ -1,5 +1,7 @@
 .vscode/launch.json
-*.*git*
+.github
+.gitignore
+.git
 *.idea
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
